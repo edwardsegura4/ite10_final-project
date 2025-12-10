@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio - Edward Richard C. Segura</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f4f4f4; color: #333; }
+        header { background: #007bff; color: white; text-align: center; padding: 50px 20px; }
+        .profile-photo { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin: 20px auto; display: block; border: 5px solid white; }
+        nav { background: #333; padding: 10px 0; text-align: center; }
+        nav a, nav button { color: white; text-decoration: none; margin: 0 15px; padding: 10px 15px; border: none; background: none; cursor: pointer; }
+        nav a:hover, nav button:hover { background: #555; }
+        .logged-out .private-nav { display: none; }
+        section { max-width: 800px; margin: 20px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h2 { color: #007bff; }
+        ul { list-style: none; padding: 0; }
+        li { margin-bottom: 10px; padding: 10px; background: #f9f9f9; border-left: 4px solid #007bff; }
+        footer { text-align: center; padding: 20px; background: #007bff; color: white; }
+        .login-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; }
+        .login-modal.show { display: flex; }
+        .modal-content { background: white; padding: 20px; border-radius: 8px; width: 300px; text-align: center; }
+        .form-group { margin-bottom: 15px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 5px; }
+        .form-group input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
+        .btn { padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; margin: 5px; }
+        .btn-primary { background: #007bff; color: white; }
+        .btn-secondary { background: #6c757d; color: white; }
+        .alert { padding: 10px; margin-top: 10px; border-radius: 4px; display: none; }
+        .alert-success { background: #d4edda; color: #155724; }
+        .alert-danger { background: #f8d7da; color: #721c24; }
+        .logged-out .private-section { display: none; }
+        .logged-in .private-section { display: block; }
+        .admin-section { display: none; background: #fff3cd; }
+        .logged-in .admin-section { display: block; }
+        @media (max-width: 768px) { header { padding: 30px 20px; } .profile-photo { width: 120px; height: 120px; } section { margin: 10px; padding: 15px; } }
+    </style>
+</head>
+<body class="logged-out">
+    <nav>
+        <a href="#about">About</a>
+        <a href="#projects" class="private-nav">Projects</a>
+        <a href="#skills" class="private-nav">Skills</a>
+        <a href="#contact" class="private-nav">Contact</a>
+        <button id="login-btn" class="btn btn-primary">Login</button>
+        <button id="logout-btn" class="btn btn-secondary" style="display: none;">Logout</button>
+    </nav>
+    <header>
+        <img src="img_me.jpg" alt="Edward Richard C. Segura" class="profile-photo">
+        <h1>Welcome to My Portfolio</h1>
+        <p>Edward Richard C. Segura - Software Developer</p>
+    </header>
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Hello! I'm Edward Richard C. Segura, a passionate software developer with experience in Java, Python, and web technologies. I love creating interactive applications and solving problems through code.</p>
+    </section>
+    <section id="projects" class="private-section">
+        <h2>My Projects</h2>
+        <ul>
+            <li><strong>Who Wants to Become a Billionaire Quiz Game</strong><br>A console-based quiz game built in Java and Python, inspired by "Who Wants to Be a Millionaire." Features multiple-choice questions, money tracking, and case-insensitive input handling.<br><em>Technologies:</em> Java, Python<br><a href="https://github.com/yourusername/quiz-game" target="_blank">View on GitHub</a></li>
+            <li><strong>Other Project</strong><br>Brief description of another project.<br><em>Technologies:</em> HTML, CSS, JS<br><a href="https://github.com/edwardsegura4/my_project.git" target="_blank">View on GitHub</a></li>
+        </ul>
+    </section>
+    <section id="skills" class="private-section">
+        <h2>Skills</h2>
+        <ul>
+            <li>Programming Languages: Java, Python, JavaScript</li>
+            <li>Web Technologies: HTML, CSS, React</li>
+            <li>Tools: Git, VS Code, IntelliJ IDEA</li>
+        </ul>
+    </section>
+    <section id="admin" class="admin-section">
+        <h2>Admin Dashboard</h2>
+        <p>Welcome, Edward! This is a private section for managing your portfolio. You can update projects, skills, or contact info here.</p>
+        <button class="btn btn-primary">Edit Projects</button>
+        <button class="btn btn-secondary">Update Skills</button>
+    </section>
+    <section id="contact" class="private-section">
+        <h2>Contact Me</h2>
+        <p>Email: edwardrichard.segura@csucc.edu.ph</p>
+        <p>Facebook: <a href="https://www.facebook.com/edwardrichard.segura" target="_blank">facebook.com/edwardrichard.segura</a></p>
+        <p>GitHub: <a href="https://github.com/edwardsegura4" target="_blank">github.com/yourusername</a></p>
+    </section>
+    <footer>
+        <p>&copy; 2025 Edward Richard C. Segura. All rights reserved.</p>
+    </footer>
+    <div id="login-modal" class="login-modal">
+        <div class="modal-content">
+            <h4>Login to Admin</h4>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+                <button type="button" id="close-modal" class="btn btn-secondary">Cancel</button>
+            </form>
+            <div id="login-message" class="alert"></div>
+        </div>
+    </div>
+    <script>
+        const i = localStorage.getItem('edwardLoggedIn') === 'true';
+        u(i);
+        document.getElementById('login-btn').addEventListener('click', () => document.getElementById('login-modal').classList.add('show'));
+        document.getElementById('close-modal').addEventListener('click', () => {
+            document.getElementById('login-modal').classList.remove('show');
+            document.getElementById('login-message').style.display = 'none';
+        });
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;  // Fixed: renamed to avoid shadowing
+            const password = document.getElementById('password').value;  // Fixed: renamed to avoid shadowing
+            const m = document.getElementById('login-message');
+            if (username === 'edwardsegura4' && password === 'jeremiah900') {
+                localStorage.setItem('edwardLoggedIn', 'true');
+                u(true);  // Now calls the function correctly
+                document.getElementById('login-modal').classList.remove('show');
+                m.className = 'alert alert-success';
+                m.textContent = 'Login successful!';
+                m.style.display = 'block';
+            } else {
+                m.className = 'alert alert-danger';
+                m.textContent = 'Invalid credentials. Try username: edwardsegura4, password: jeremiah900.';
+                m.style.display = 'block';
+            }
+        });
+        document.getElementById('logout-btn').addEventListener('click', () => {
+            localStorage.removeItem('edwardLoggedIn');
+            u(false);
+        });
+        function u(l) {  // Function name kept short for brevity
+            const b = document.body;
+            const lb = document.getElementById('login-btn');
+            const ob = document.getElementById('logout-btn');
+            if (l) {
+                b.classList.remove('logged-out');
+                b.classList.add('logged-in');
+                lb.style.display = 'none';
+                ob.style.display = 'inline-block';
+            } else {
+                b.classList.remove('logged-in');
+                b.classList.add('logged-out');
+                lb.style.display = 'inline-block';
+                ob.style.display = 'none';
+            }
+        }
+        document.querySelectorAll('nav a[href^="#"]').forEach(a => a.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        }));
+    </script>
+</body>
+</html>
