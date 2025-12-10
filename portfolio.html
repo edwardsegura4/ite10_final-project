@@ -15,7 +15,8 @@
         section { max-width: 800px; margin: 20px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
         h2 { color: #007bff; }
         ul { list-style: none; padding: 0; }
-        li { margin-bottom: 10px; padding: 10px; background: #f9f9f9; border-left: 4px solid #007bff; }
+        li { margin-bottom: 10px; padding: 10px; background: #f9f9f9; border-left: 4px solid #007bff; overflow: hidden; } /* Added overflow: hidden for float */
+        .project-image { width: 150px; height: auto; float: left; margin-right: 15px; border-radius: 4px; } /* New style for project images */
         footer { text-align: center; padding: 20px; background: #007bff; color: white; }
         .login-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; }
         .login-modal.show { display: flex; }
@@ -33,7 +34,7 @@
         .logged-in .private-section { display: block; }
         .admin-section { display: none; background: #fff3cd; }
         .logged-in .admin-section { display: block; }
-        @media (max-width: 768px) { header { padding: 30px 20px; } .profile-photo { width: 120px; height: 120px; } section { margin: 10px; padding: 15px; } }
+        @media (max-width: 768px) { header { padding: 30px 20px; } .profile-photo { width: 120px; height: 120px; } section { margin: 10px; padding: 15px; } .project-image { width: 100px; } /* Smaller image on mobile */ }
     </style>
 </head>
 <body class="logged-out">
@@ -57,7 +58,11 @@
     <section id="projects" class="private-section">
         <h2>My Projects</h2>
         <ul>
-            <li><strong>Who Wants to Become a Billionaire Quiz Game</strong><br>A quiz game built in Java and Python, inspired by "Who Wants to Be a Billionaire." Featuring multiple-choice questions, money tracking, and case-insensitive input handling.<br><em>Technologies:</em> Java, Python<br><a href="https://github.com/edwardsegura4/my_project.git" target="_blank">View on GitHub</a></li>
+            <li>
+                <img src="java.jpeg" alt="Who Wants to Become a Billionaire Quiz Game Screenshot" class="project-image">
+                <img src="python.jpeg" alt="Who Wants to Become a Billionaire Quiz Game Screenshot" class="project-image"> <!-- Added image for the project -->
+                <strong>Who Wants to Become a Billionaire Quiz Game</strong><br>A quiz game built in Java and Python, inspired by "Who Wants to Be a Billionaire." Featuring multiple-choice questions, money tracking, and case-insensitive input handling.<br><em>Technologies:</em> Java, Python<br><a href="https://github.com/edwardsegura4/my_project.git" target="_blank">View on GitHub</a>
+            </li>
             
         </ul>
     </section>
